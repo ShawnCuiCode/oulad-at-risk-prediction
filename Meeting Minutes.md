@@ -50,7 +50,7 @@ On the I1 ablation structure, the four configurations — B1+ baseline, I1 main,
 
 ---
 
-## Meeting 4 — 4 June 2026
+## Meeting 4 — 28 May 2026
 
 The weekly progress update covering the I1 and I1+ integration models was submitted in advance along with two methodology questions.
 
@@ -60,7 +60,7 @@ On framing the dissertation contribution, it is appropriate to position explaina
 
 ---
 
-## Meeting 5 — 11 June 2026
+## Meeting 5 — 4 June 2026
 
 This meeting reviewed the SHAP analysis and natural language explanation work completed this week, and included general feedback on the dissertation direction and demo design.
 
