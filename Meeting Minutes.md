@@ -2,7 +2,7 @@
 
 ---
 
-## Meeting 1 — 7 May 2026
+## Meeting 1 - 7 May 2026
 
 This meeting covered progress on the dissertation, including feedback on the Literature Review and a report on Exploratory Data Analysis progress. Two specific methodology questions were also addressed, resulting in the following decisions and feedback.
 
@@ -21,12 +21,12 @@ For the project demo, the supervisor recommended a week-by-week performance curv
 
 ---
 
-## Meeting 2 — 14 May 2026
+## Meeting 2 - 14 May 2026
 
 
 This meeting addressed three pre-submitted methodology questions and included general progress feedback on the dissertation.
 
-On `imd_band` removal, the exclusion of the feature was confirmed for all subsequent models. Removal yields negligible performance change (macro-F1 Δ ≈ +0.0002, AUC Δ ≈ +0.002) and data quality concerns apply. The rationale must be documented in the methodology section.
+On `imd_band` removal, the exclusion of the feature was confirmed for all subsequent models. Removal yields negligible performance change (macro-F1 delta ≈ +0.0002, AUC delta ≈ +0.002) and data quality concerns apply. The rationale must be documented in the methodology section.
 
 On label distribution shift, no active correction is required. The withdrawal rate increase from 27.9% (2013 train) to 34.1% (2014 test) — a 6.2 pp gap — reflects the Open University's atypical educational model. With only two years of data it is not possible to identify which cohort is anomalous. This shift must be reported as a limitation of the temporal validation strategy.
 
@@ -36,31 +36,31 @@ The supervisor recommended prioritising the combination of static student charac
 
 ---
 
-## Meeting 3 — 20 May 2026
+## Meeting 3 - 20 May 2026
 
 This meeting reviewed the completed clustering strand and the updated classification baseline, and confirmed the plan for the next implementation stage.
 
-Three clustering models were built progressively in a structured B2 → B2+ → B2-Ext progression. B2 used 7 features as the initial model; B2+ extended this to 12 features with K = 3 selected; B2-Ext reached the final configuration of 16 temporal and static features with K = 3 confirmed.
+Three clustering models were built progressively in a structured B2 -> B2+ -> B2-Ext progression. B2 used 7 features as the initial model; B2+ extended this to 12 features with K = 3 selected; B2-Ext reached the final configuration of 16 temporal and static features with K = 3 confirmed.
 
 On the choice of K = 3, this was approved. K = 2 achieves the best silhouette score but collapses distinct withdrawal trajectories, limiting interpretability. K = 4 yields the weakest DB score (1.50). K = 3 balances statistical validity and educational meaning, and the justification must be included in the report.
 
-On the 16-feature set, the B2 → B2+ → B2-Ext progression was considered well-structured and the temporal features well-motivated by the N-week prediction setting; the rationale must be documented.
+On the 16-feature set, the B2 -> B2+ -> B2-Ext progression was considered well-structured and the temporal features well-motivated by the N-week prediction setting; the rationale must be documented.
 
-On the I1 ablation structure, the four configurations — B1+ baseline, I1 main, I1-ablation, and I1-K2 — were confirmed as feasible; implementation may proceed. SHAP will be used for feature importance visualisation and presented alongside the I1 results.
+On the I1 ablation structure, the four configurations - B1+ baseline, I1 main, I1-ablation, and I1-K2 - were confirmed as feasible; implementation may proceed. SHAP will be used for feature importance visualisation and presented alongside the I1 results.
 
 ---
 
-## Meeting 4 — 28 May 2026
+## Meeting 4 - 28 May 2026
 
 The weekly progress update covering the I1 and I1+ integration models was submitted in advance along with two methodology questions.
 
-The I1 and I1+ models were completed this week, injecting the K = 3 cluster label from B2+ into the XGBoost classifier. B1 → I1 yields Δmacro-F1 = +0.0078 and ΔAUC = +0.0069; B1+ → I1+ yields Δmacro-F1 = +0.0100 and ΔAUC = +0.0039. McNemar's test confirms I1+ vs B1 is statistically significant (p < 0.05). The supervisor noted that one model is better tuned than the others; if time permits, each model should be tuned independently and this should be mentioned in the report.
+The I1 and I1+ models were completed this week, injecting the K = 3 cluster label from B2+ into the XGBoost classifier. B1 -> I1 yields delta-macro-F1 = +0.0078 and delta-AUC = +0.0069; B1+ -> I1+ yields delta-macro-F1 = +0.0100 and delta-AUC = +0.0039. McNemar's test confirms I1+ vs B1 is statistically significant (p < 0.05). The supervisor noted that one model is better tuned than the others; if time permits, each model should be tuned independently and this should be mentioned in the report.
 
 On framing the dissertation contribution, it is appropriate to position explainability as the primary contribution and performance improvement as a secondary finding. The cluster label provides a human-readable engagement profile attached to each prediction, allowing educators to understand why a student is flagged without inspecting individual feature values. Personal characteristics and engagement signals operate on two effectively different axes, and this distinction should be discussed in the results chapter.
 
 ---
 
-## Meeting 5 — 4 June 2026
+## Meeting 5 - 4 June 2026
 
 This meeting reviewed the SHAP analysis and natural language explanation work completed this week, and included general feedback on the dissertation direction and demo design.
 
@@ -71,3 +71,18 @@ On the explanation output, more context and actual explanation is needed beyond 
 The supervisor recommended incorporating education-theory-based suggestions — not only explaining why a student is at risk, but also recommending what could be done to help them. This would extend the explainability argument and add practical value for educators.
 
 On the demo, it does not need to show all work is finished. The teacher-facing interface should allow course selection, display a ranked list of at-risk students with their risk information, and provide individual student detail views. A1 can follow once the demo is in place.
+
+## Meeting 6 - 11 June 2026
+This meeting reviewed the completed early warning system demo and discussed model accuracy, with a focus on improving recall and incorporating assessment data.
+
+A technical issue reported prior to the meeting — the system rejecting non-Latin characters — has been resolved by the module leader.
+
+I demonstrated the early warning system across three tabs: a ranked at-risk student list with withdrawal probabilities, a student lookup view with SHAP explanations, natural language rationale, and recommended interventions, and a K-means clustering profile. Professor Southern responded positively to the individual-level explanation design, noting it makes the system usable for teaching staff without data science expertise.
+
+On accuracy, the model achieves only 68% at the final teaching week where near-perfect performance is expected. False positives were identified as one cause — disengaged-cluster students who nonetheless pass being flagged as high risk. Professor Southern stressed that false negatives are the more critical failure. The overall false positive rate is also too high, with roughly half of the ~9,000 predicted at-risk students appearing to be incorrect.
+
+Professor Southern suggested incorporating assessment scores as dynamic week-by-week features: if an assessment occurs in week 10, that score should enter the model from week 11 onwards. Better use of granular VLE features alongside assessment results is expected to improve recall.
+
+I also confirmed that past meeting minutes have been uploaded to the system.
+
+Next Week I will improve recall and reduce false positives. Incorporate assessment scores as time-sensitive features and review granular VLE features for inclusion.
