@@ -86,3 +86,15 @@ Professor Southern suggested incorporating assessment scores as dynamic week-by-
 I also confirmed that past meeting minutes have been uploaded to the system.
 
 Next Week I will improve recall and reduce false positives. Incorporate assessment scores as time-sensitive features and review granular VLE features for inclusion.
+
+---
+
+## Meeting 7 - 18 June 2026
+
+This meeting reviewed two fixes made to the early warning system this week and discussed the false positive handling strategy, with a decision on next steps.
+
+Two issues were resolved this week. First, the data pipeline was corrected after finding that accuracy had stayed nearly flat across teaching weeks because different presentations were mixed and features were aggregated at the student level rather than the student-presentation level. Restricting the data to module FFF as a single presentation and changing the prediction key to id_student + code_presentation produced the expected pattern: accuracy improves from around 70% at week 4 to approximately 95% by week 38. Second, an early-week post-processing rule was added to soften extreme risk scores for students already showing positive engagement signals, reducing false positives in weeks 4 and 8 without affecting later-week results.
+
+On false positives, some students with high withdrawal probability scores (approaching 98%) were nonetheless passing and belonged to the high engagement cluster. Professor Southern noted that the current false positive count appears small based on the demo, and advised against retraining at this stage. The current approach is acceptable as a calibration step; a precise false positive count should be added to document the scale of the issue clearly.
+
+Professor Southern recommended proceeding on two parallel tracks: begin the write-up while continuing to work on the next objective. No major model changes are required before writing begins.
