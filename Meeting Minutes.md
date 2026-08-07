@@ -98,3 +98,19 @@ Two issues were resolved this week. First, the data pipeline was corrected after
 On false positives, some students with high withdrawal probability scores (approaching 98%) were nonetheless passing and belonged to the high engagement cluster. Professor Southern noted that the current false positive count appears small based on the demo, and advised against retraining at this stage. The current approach is acceptable as a calibration step; a precise false positive count should be added to document the scale of the issue clearly.
 
 Professor Southern recommended proceeding on two parallel tracks: begin the write-up while continuing to work on the next objective. No major model changes are required before writing begins.
+
+## Meeting 8 - 25 June 2026
+
+This meeting reviewed dissertation writing progress and discussed whether target-domain retraining should be attempted before the next stage of the work.
+
+Professor Southern first asked how long it would take to retrain the model on the target domain. The estimate given was around two hours. Professor Southern suggested that this would be worth trying if time permits, since it may provide a further improvement over the current analysis.
+
+Professor Southern then clarified the meeting schedule for the rest of the month. This was the final meeting for the month, and two more meetings were expected over the next couple of months. Those later meetings would most likely focus on the writing stage rather than on major analytical changes.
+
+On preparation for the main report, Professor Southern asked whether there were any remaining questions before writing begins. The plan was to finish the Introduction and Related Work sections first, then move on to the Methodology section in the following week.
+
+Professor Southern also asked about the report format, and confirmed that the provided templates should be used for the final submission.
+
+Before the next meeting, an email should be sent together with the draft once the writing tasks are complete. Professor Southern will then review the draft in the next meeting and go through it section by section.
+
+No further questions were raised, and the meeting ended with encouragement to continue progressing the write-up and prepare the full draft for review.
